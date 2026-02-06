@@ -29,8 +29,7 @@ export default async (
       res.status(200).json({ ok: true });
           } else if (req.query.setup === 'webhook') {
       // Установка webhook
-      const webhookUrl = 'https://alter-text-bot.vercel.app/';
-      await bot.api.setWebhook(webhookUrl);
+const webhookUrl = 'https://alter-text-bot.vercel.app/api';      await bot.api.setWebhook(webhookUrl);
       const info = await bot.api.getWebhookInfo();
       res.status(200).json({ status: 'Webhook set', info });
           } else {
