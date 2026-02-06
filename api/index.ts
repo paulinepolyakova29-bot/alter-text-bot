@@ -27,13 +27,13 @@ export default async (
       // Обработка webhook от Telegram
       await bot.handleUpdate(req.body);
       res.status(200).json({ ok: true });
-    } else {
           } else if (req.query.setup === 'webhook') {
       // Установка webhook
       const webhookUrl = 'https://alter-text-bot.vercel.app/';
       await bot.api.setWebhook(webhookUrl);
       const info = await bot.api.getWebhookInfo();
       res.status(200).json({ status: 'Webhook set', info });
+          } else {
       // Проверка, что сервер живет
       res.status(200).json({ status: 'Bot is running' });
     }
