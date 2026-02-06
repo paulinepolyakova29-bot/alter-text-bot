@@ -32,6 +32,10 @@ export default async (
 const webhookUrl = 'https://alter-text-bot.vercel.app/api';      await bot.api.setWebhook(webhookUrl);
       const info = await bot.api.getWebhookInfo();
       res.status(200).json({ status: 'Webhook set', info });
+          } else if (req.query.setup === 'delete') {
+      // Удаление webhook
+      await bot.api.deleteWebhook();
+      res.status(200).json({ status: 'Webhook deleted' });
           } else {
       // Проверка, что сервер живет
       res.status(200).json({ status: 'Bot is running' });
